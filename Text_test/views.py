@@ -184,7 +184,7 @@ def analyze(request):
                 context={"remove_line":remove_line,"charcount":charcount,"count":count,"text":text}
                 return render(request,"analyzed.html", context)
         else:
-            return render(request,"alerts.html", context={"Oneaction":"Select At lease one action"})
+            return render(request,"analyzed.html", context={"Oneaction":"Select At lease one action"})
     else:
          return HttpResponse("ERROR")
     
