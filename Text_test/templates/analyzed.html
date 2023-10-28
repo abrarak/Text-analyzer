@@ -1,0 +1,236 @@
+{% extends "master.html" %}
+
+{% block style %}
+<style>
+.bodymsg{
+        font-size:50px;
+        text-align:center;
+       }
+ </style>
+{% endblock style %}
+{% block body %}
+{% if remove_punc == "on" and remove_line == "on" %}
+ <div class="alert alert-danger" role="alert">
+    Action is not valid  , Select  Only One action among<strong> [ Punctuation , Remove Line] </strong>
+ </div>
+{% elif remove_punc == "on"  %}
+  {% if lowercase == "on" and uppercase == "on" and title_case == "on"  %}
+    <div class="alert alert-danger" role="alert">
+     Action is not valid as all of the case have selected , Select  Only One action among<strong> [ Uppercase, Lowercase , Title] </strong></div>
+  {% elif  lowercase == "on" and title_case == "on" %}
+     <div class="alert alert-danger" role="alert">
+     Action is not Valid , Select  Only One action among<strong> [ Lowercase , Title] </strong>
+     </div>
+ 
+  {% elif  lowercase == "on" and uppercase == "on" %}
+     <div class="alert alert-danger" role="alert">
+     Action is not Valid Two selected, Select  Only One action among<strong> [ Uppercase, Lowercase ] </strong>
+     </div>
+ 
+  {% elif  uppercase == "on" and title_case == "on" %}
+     <div class="alert alert-danger" role="alert">
+     Action is not Valid Two selected, Select  Only One action among<strong> [ Uppercase, Title] </strong>
+     </div>
+  {% elif lowercase == "on" %}
+    {% if charcount == "on" %}
+    <div style="background-color:white;margin:50px;padding:16px">
+     <p><strong> Given Text  :</strong> {{text}}</p>
+     <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+     <p><strong> Character Count :</strong> {{count}}</p>
+     <p><strong> You selected :</strong> Punctuation , Lowercase and Character Count</p>
+     </div>
+    {% else %}
+       <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> You selected :</strong> Punctuation and Lowercase </p>
+        </div>
+    {% endif %}
+  {% elif uppercase == "on" %}
+     {% if charcount == "on" %}
+     <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Punctuation , Uppercase and Character Count</p>
+     </div>
+     {% else %}
+     <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> You selected :</strong> Punctuation and Uppercase </p>
+     </div>
+     {% endif %}
+
+  {% elif title_case == "on" %}
+      {% if charcount == "on" %}
+       <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Punctuation , Title Case and Character Count</p>
+      </div>
+    {% else %}
+     <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> You selected :</strong> Punctuation and Title Case</p>
+     </div>
+    {% endif %}
+  {% elif charcount == "on" %}
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Punctuation  and Character Count</p>
+    </div>
+    {% else %}
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> You selected :</strong> Punctuation </p>
+    </div>
+  {% endif %}
+{% elif  lowercase == "on" and uppercase == "on" and title_case == "on"  %}
+    <div class="alert alert-danger" role="alert">
+      Action is not Valid 3 selected , Select  Only One action among<strong> [ Uppercase, Lowercase , Title] </strong>
+    </div>
+{% elif  lowercase == "on" and title_case == "on" %}
+     <div class="alert alert-danger" role="alert">
+      Action is not Valid , Select  Only One action among<strong> [ Lowercase , Title] </strong>
+     </div>
+  
+{% elif  lowercase == "on" and uppercase == "on" %}
+    <div class="alert alert-danger" role="alert">
+      Action is not Valid Two selected, Select  Only One action among<strong> [ Uppercase, Lowercase ] </strong>
+    </div>
+  
+{% elif  uppercase == "on" and title_case == "on" %}
+     <div class="alert alert-danger" role="alert">
+      Action is not Valid Two selected, Select  Only One action among<strong> [ Uppercase, Title] </strong>
+     </div>
+  
+{% elif lowercase == "on" %}
+   {% if remove_line == "on" and charcount == "on" %}
+        <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Lowercase , Removeline  and Character Count</p>
+        </div>
+   {% elif remove_line == "off" and charcount == "on" %}
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Lowercase and Character Count</p>
+        </div>
+    {% elif remove_line == "on" and charcount == "off" %}
+        <div style="background-color:white;margin:50px;padding:16px">
+            <p><strong> Given Text  :</strong> {{text}}</p>
+            <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+            <p><strong> You selected :</strong> Lowercase and Removeline</p>
+        </div>
+    {% else %}
+        <div style="background-color:white;margin:50px;padding:16px">
+            <p><strong> Given Text  :</strong> {{text}}</p>
+            <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+            <p><strong> You selected :</strong> Lowercase </p>
+        </div>
+    {% endif %}
+{% elif uppercase == "on" %}
+   {% if remove_line == "on" and charcount == "on" %}
+   <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Uppercase , Remove Line and Character Count</p>
+    </div>
+    {% elif remove_line == "off" and charcount == "on" %}
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Uppercase  and Character Count</p>
+        </div>
+    {% elif remove_line == "on" and charcount == "off" %}
+        <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> You selected :</strong> Uppercase and Remove Line </p>
+        </div>
+    {% else %}
+        <div style="background-color:white;margin:50px;padding:16px">
+            <p><strong> Given Text  :</strong> {{text}}</p>
+            <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+            <p><strong> You selected :</strong> Uppercase </p>
+        </div>
+   {% endif %}
+
+
+{% elif title_case == "on" %}
+   {% if remove_line == "on" and charcount == "on" %}
+   <div style="background-color:white;margin:50px;padding:16px">
+    <p><strong> Given Text  :</strong> {{text}}</p>
+    <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+    <p><strong> Character Count :</strong> {{count}}</p>
+    <p><strong> You selected :</strong> Title case , Remove Line and Character Count</p>
+    </div>
+    {% elif remove_line == "off" and charcount == "on" %}
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong> Title case Character Count</p>
+        </div>
+    {% elif remove_line == "on" and charcount == "off" %}
+        <div style="background-color:white;margin:50px;padding:16px">
+            <p><strong> Given Text  :</strong> {{text}}</p>
+            <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+            <p><strong> You selected :</strong> Title case and Remove Line </p>
+        </div>
+    {% else %}
+        <div style="background-color:white;margin:50px;padding:16px">
+            <p><strong> Given Text  :</strong> {{text}}</p>
+            <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+            <p><strong> You selected :</strong> Title case </p>
+        </div>
+   {% endif %}
+
+{% elif remove_line == "on" and charcount == "on" %}
+
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected :</strong>  Remove Line and Character Count</p>
+    </div>
+
+
+{% elif remove_line == "on" and charcount == "off" %}
+
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Analyzed Text  :</strong> {{antext}}</p>
+        <p><strong> You selected :</strong> Remove Line </p>
+    </div>
+
+{% elif remove_line == "off" and charcount == "on" %}
+
+    <div style="background-color:white;margin:50px;padding:16px">
+        <p><strong> Given Text  :</strong> {{text}}</p>
+        <p><strong> Character Count :</strong> {{count}}</p>
+        <p><strong> You selected : </strong> Character Count</p>
+    </div>
+ 
+<!-- alerts-->
+{% else %}
+    <div class="alert alert-warning" role="alert">
+    {{Oneaction}}
+    </div>
+{% endif %}
+
+<h1 class="bodymsg">Have a Good Day !!!</h1>
+{% endblock body %}
+
+

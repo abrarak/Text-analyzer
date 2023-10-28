@@ -1,0 +1,48 @@
+{% extends "master.html" %}
+{% block style %}
+<style>
+   h1{
+    font-size:100px;
+    text-align:center;
+   } 
+</style>
+{% endblock style %}
+
+
+{% block body %}
+{% if remove_punc == "on" and remove_line == "on"%}
+<div class="alert alert-danger" role="alert">
+    Action is not Valid  , Select  Only One action among<strong> [ Punctuation , Remove Line] </strong>
+</div>
+{% elif lowercase == "on" and uppercase == "on" and title_case == "on"  %}
+<div class="alert alert-danger" role="alert">
+    Action is not Valid 3 selected , Select  Only One action among<strong> [ Uppercase, Lowercase , Title] </strong>
+</div>
+{% elif  lowercase == "on" and title_case == "on" %}
+<div class="alert alert-danger" role="alert">
+    Action is not Valid , Select  Only One action among<strong> [ Lowercase , Title] </strong>
+</div>
+
+{% elif  lowercase == "on" and uppercase == "on" %}
+<div class="alert alert-danger" role="alert">
+    Action is not Valid Two selected, Select  Only One action among<strong> [ Uppercase, Lowercase ] </strong>
+</div>
+
+{% elif  uppercase == "on" and title_case == "on" %}
+<div class="alert alert-danger" role="alert">
+    Action is not Valid Two selected, Select  Only One action among<strong> [ Uppercase, Title] </strong>
+</div>
+
+{% else %}
+<div class="alert alert-warning" role="alert">
+    {{Oneaction}}
+</div>
+
+
+{% endif %}
+
+
+
+
+<h1>Have a Good Day !!!</h1>
+{% endblock body %}

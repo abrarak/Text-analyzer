@@ -1,0 +1,58 @@
+{% extends "master.html" %}
+{% block style %}
+<style>
+    .fields{
+        font-size:30px;
+        font-weight:bold;
+    }
+    
+</style>
+{% endblock style %}
+
+
+{% block body %}
+      <div class="container">
+      <div class="mt-5">
+         <form class="col-auto" method="GET" action="analyze">
+
+            <div class="form-group">
+              <label class="fields">Enter your Text</label>
+              <br>
+              <br>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text" Required placeholder="Enter your Text Here...."></textarea>
+            </div> 
+            <hr>
+            <div class="mt-2">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="removepunc" ><strong>Punctuation</strong><p style="opacity:0.6">eg:[ % ! ; * % ..]<p>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="uppercase"><strong>UPPERCASE</strong>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="lowercase"><strong>lowercase</strong>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="title"><strong>Ttile</strong>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="removeline"><strong>Removeline</strong>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="charcount"><strong>Char count</strong>
+                </div>
+
+            </div>
+           <hr>
+            <div class="mt-3">
+            <button type="submit" class="btn btn-success">Analyze</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    {% endblock body %}
