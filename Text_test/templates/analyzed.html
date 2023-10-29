@@ -9,6 +9,7 @@
  </style>
 {% endblock style %}
 {% block body %}
+{% csrf_token %}
 {% if remove_punc == "on" and remove_line == "on" %}
  <div class="alert alert-danger" role="alert">
     Action is not valid  , Select  Only One action among<strong> [ Punctuation , Remove Line] </strong>
